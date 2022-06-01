@@ -6,12 +6,14 @@ namespace MvcMovie.Controllers{
         //
         // GET: /HelloWorld/
 
-        public string Index(){
-            return "This is my dafault action...";
+        public IActionResult Index(){
+            return View();
         }
+        public IActionResult Welcome(string name, int numTimes = 1){
+            ViewData["Message"] = "Hello " + name;
+            ViewData["NumTimes"] = numTimes;
 
-        public string Welcome(string name, int numTimes = 1){
-            return HtmlEncoder.Default.Encode($"hello {name}, NumTimes is: {numTimes}");
+            return View(); 
         }
     }
 }
